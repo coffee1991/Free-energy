@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Calculadora Solar: inversión, kWh nivelado y comparación</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style_calculadora.css">
+</head>
+
+<body>
+    <header style="height: 150px;">
+        <div class="text-white " style="background-color: rgba(0, 0, 0, 0.6); height: 150px;">
+
+            <div class="row">
+                <div class="col-12 col-sm-2  " style="text-align: center;">
+                    <a href="index.html"><img src=" img/Logo_blanco.png" alt="Logo" width="120" height="120"></a>
+                </div>
+                <div class="col-12 col-sm-10 text-white d-flex justify-content-start align-items-center ">
+                    <nav class="">
+                        <ul >
+                            <li><a class="btn btn-outline-light" href="index.html">Inicio</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+    <div class="container">
+        <div class="card">
+            <h1>Calcula tu transición hacia la energía solar</h1>
+            <p class="muted">
+                Descubre una alternativa limpia y sostenible para generar tu propia energía y alcanzar la independencia
+                energética que siempre has querido. Con esta calculadora podrás estimar cuántos paneles solares
+                necesitas para suplir tu consumo actual, conocer el costo aproximado de la inversión y comparar cuánto
+                te costaría cada kilovatio generado frente a la energía tradicional.
+                Dale una mirada al futuro de la energía: más ahorro, más autonomía y un compromiso real con el planeta
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>1. Consumo del usuario</h2>
+            <div class="grid">
+                <div>
+                    <label>Tipo de consumo</label>
+                    <select id="Tipo_Consumo">
+                        <option></option>
+                        <option value="D">kWh por día</option>
+                        <option value="M">kWh por mes</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Valor (kWh)</label>
+                    <input id="Valor_Consumo" type="number" step="0.1" min="1">
+                </div>
+                <div>
+                    <label>Período para comparación en meses. (ej. 12 meses) </label>
+                    <input id="Numero_Meses" type="number" min="1" max="120">
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2. Parámetros técnicos del sistema</h2>
+            <div class="grid">
+                <div><label>Potencia panel (W)</label><input id="Potencia_Panel" type="number" min="1" max="1000"></div>
+                <div><label>Horas pico sol en h/día. (Suele estar en 4.5-10) </label><input id="Horas_Pico" type="number" step="0.1" value="4.5" min="1" max="10"></div>
+                <div><label>Eficiencia total sistema (0 - 1)</label><input id="Eficiencia_SistemaTotal" type="number" step="0.01" value="0.75" min="0.5" max="1"></div> 
+                <div><label>Días autonomía de la batería. (1 - 10)</label><input id="Dias_Autonomia" type="number" value="1" min="0" max="10"></div>
+                <div><label>DoD - profundidad de descarga. (0 - 1)</label><input id="dod" type="number" step="0.01" value="0.8" min="0.5" max="1"></div>
+                <div><label>Eficiencia batería/inversor. (0 - 1)</label><input id="Eficiencia_BateriaInversor" type="number" step="0.01" value="0.9" min="0.5" max="1"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>3. Costos y vida útil</h2>
+            <div class="grid">
+                <div><label>Costo por panel (USD)</label><input id="Costo_Panel" type="number" step="1"
+                        min="50"></div>
+                <div><label>Costo batería por kWh (USD/kWh)</label><input id="Costo_Bateria" type="number" step="1"
+                        value="200" min="50"></div>
+                <div><label>Costo inversor y otros (USD)</label><input id="Costo_InversorOtros" type="number" step="1"
+                        value="800" min="100"></div>
+                <div><label>Instalación y cableado (%)</label><input id="Costo_Instalacion" type="number" step="1" value="10"
+                        min="0" max="50"></div>
+                <div><label>Costos operacion y mantenimiento anuales (USD)</label><input id="Costo_OperacionMantenimiento" type="number" step="1" value="100"
+                        min="0"></div>
+                <div><label>Vida útil sistema (años)</label><input id="Vida_Util" type="number" step="1" value="25"
+                        min="1" max="40"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>4. Valor de Dolar en COP</h2>
+            <div>
+                <div><label>Valor de Dolar en COP</label><input id="Dolar_COP" type="number" step="1"
+                        value="4000" min="1"></div>
+
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                    <h2>Resultados</h2><small class="muted">Haz clic en calcular</small>
+                </div>
+                <div><button onclick="Calcular()">Calcular</button><button class="ghost"
+                        onclick="Reset()">Reset</button></div>
+            </div>
+
+            <div class="results" id="Resultados">
+                <div class="box">
+                    <div class="muted">Consumo</div>
+                    <div id="Resultado_consumo" class="big">-</div>
+                </div>
+                <div class="box">
+                    <div class="muted">PV requerido</div>
+                    <div id="Resultado_pv" class="big">-</div>
+                </div>
+                <div class="box">
+                    <div class="muted">Paneles</div>
+                    <div id="Resultado_paneles" class="big">-</div>
+                </div>
+                <div class="box">
+                    <div class="muted">Batería</div>
+                    <div id="Resultado_Bateria" class="big">-</div>
+                </div>
+                <div class="box">
+                    <div class="muted">Inversión</div>
+                    <div id="Resultado_Inversion" class="big">-</div>
+                </div>
+                <div class="box">
+                    <div class="muted">kWh nivelado</div>
+                    <div id="Resultado_KWh" class="big">-</div>
+                </div>
+            </div>
+
+            <div id="Comparacion_Pais" style="margin-top:15px"></div>
+
+                        <h2>Tarifas por zona en Colombia</h2>
+            <p class="muted">Valores promedio en COP/kWh — Analiza el ahorro que tendrias al cambiarte a un sistama de abatsecimeineto energetico con paneles solares.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Zona</th>
+                        <th>Tarifa Promedio Zona (COP/kWh)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bogotá</td>
+                        <td><input id="Tasa_bog" type="number" value="650" min="100"></td>
+                    </tr>
+                    <tr>
+                        <td>Medellín</td>
+                        <td><input id="Tasa_med" type="number" value="600" min="100"></td>
+                    </tr>
+                    <tr>
+                        <td>Región Caribe</td>
+                        <td><input id="Tasa_car" type="number" value="720" min="100"></td>
+                    </tr>
+                    <tr>
+                        <td>Zona rural</td>
+                        <td><input id="Tasa_rur" type="number" value="800" min="100"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="card muted">
+            <small>Calculadora solar © 2025 </small>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="javascript/calculadora.js"></script>
+</body>
+
+</html>

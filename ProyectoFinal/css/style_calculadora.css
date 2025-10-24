@@ -1,0 +1,127 @@
+:root {
+    --bg: #f3faf6;
+    --card: #fff;
+    --accent: #10734a;
+    --muted: #556;
+}
+
+/*****/
+.myborder{
+    border: solid 1px #d81212;
+}
+
+.myborder2{
+    border: solid 1px #2cc968;
+}
+header{
+    /* background-image: url('https://solinc.com.mx/wp-content/uploads/2018/11/img-solinc-ventajas-desventajas-paneles-solares-01.jpg'); */
+    background-image: url('https://www.factorenergia.com/wp-content/uploads/2023/03/AdobeStock_1272084889-1.jpeg');
+    /* background-image: url('https://www.celsia.com/wp-content/uploads/2021/03/607x390_69.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    /* height: 200px; */
+}
+ul{
+    list-style-type: none;
+}
+body {
+    font-family: Inter, system-ui, Arial;
+    margin: 0;
+    background: var(--bg);
+    color: #123;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 28px auto;
+    padding: 20px;
+}
+
+.card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    margin-bottom: 18px;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 22px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e2eef0;
+    border-radius: 6px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+button {
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button.ghost {
+    background: transparent;
+    border: 1px solid rgba(16, 115, 74, 0.2);
+    color: var(--accent);
+}
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.box {
+    background: #f8fff8;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ecf7ee;
+}
+
+.big {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+footer {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+}
+
+@media (max-width:900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .results {
+        grid-template-columns: 1fr;
+    }
+}

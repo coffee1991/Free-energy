@@ -1,0 +1,83 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Carousel styling */
+#introCarousel,
+.carousel-inner,
+.carousel-item,
+.mask,
+.carousel-item.active {
+  height: 100vh;
+}
+
+.carousel-item:nth-child(1) {
+  /* background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg'); */
+  background-image: url('https://www.celsia.com/wp-content/uploads/2021/03/607x390_69.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.carousel-item:nth-child(2) {
+  background-image: url('https://www.factorenergia.com/wp-content/uploads/2023/03/AdobeStock_1272084889-1.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.carousel-item:nth-child(3) {
+  background-image: url('https://solinc.com.mx/wp-content/uploads/2018/11/img-solinc-ventajas-desventajas-paneles-solares-01.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+/* Height for devices larger than 576px */
+@media (min-width: 992px) {
+  #introCarousel {
+    margin-top: -58.59px;
+  }
+}
+
+.navbar .nav-link {
+  color: #fff !important;
+}
+
+/*****/
+.myborder{
+    border: solid 1px #d81212;
+}
+
+.myborder2{
+    border: solid 1px #2cc968;
+}
+
+.table th {
+    background-color: #198754 !important; /* Verde Bootstrap */
+    color: white;
+}
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.mybutton:hover{
+    background-color: #198754 !important;
+    color: white !important;
+    /* aumetar el tamaño */
+    transform: scale(1.2);
+
+}
+
+footer{
+    /* background-image: url('https://solinc.com.mx/wp-content/uploads/2018/11/img-solinc-ventajas-desventajas-paneles-solares-01.jpg'); */
+  /* background-image: url('https://www.factorenergia.com/wp-content/uploads/2023/03/AdobeStock_1272084889-1.jpeg'); */
+    background-image: url('https://www.celsia.com/wp-content/uploads/2021/03/607x390_69.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+footer ul{
+    list-style-type: none;
+}
